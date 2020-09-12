@@ -100,47 +100,6 @@ top_country_gold = top_df.loc[top_df['Golden_Ratio'].idxmax(),'Country_Name']
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-# summer_df["Golden_Ratio"] = summer_df['Gold_Summer'] /summer_df['Total_Summer']
-# print(summer_df)
-# summer_max_ratio = summer_df[['Golden_Ratio','Country_Name']]['Golden_Ratio'].max()[0]
-# summer_country_gold  = summer_df[['Golden_Ratio','Country_Name']].max()
-# print(summer_country_gold)
-
-# winter_df["Golden_Ratio"] = winter_df['Gold_Winter'] /winter_df['Total_Winter']
-# winter_max_ratio = winter_df[['Golden_Ratio','Country_Name']].max()[0]
-# winter_country_gold  = winter_df[['Golden_Ratio','Country_Name']].max()[1]
-
-
-# top_df["Golden_Ratio"] = top_df['Gold_Total'] /top_df['Total_Medals']
-# top_max_ratio = top_df[['Golden_Ratio','Country_Name']].max()[0]
-# top_country_gold  = top_df[['Golden_Ratio','Country_Name']].max()[1]
-
-
-
-
-
-
-
-
-
-
-
-# print(summer_df)
-
-
-
 # --------------
 #Code starts here
 
