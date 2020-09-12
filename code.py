@@ -1,4 +1,5 @@
 # --------------
+# Data Loading....
 #Importing header files
 import pandas as pd
 import numpy as np
@@ -15,8 +16,9 @@ data.rename(columns={'Total':'Total_Medals'},inplace =True)
 print(data.head(10))
 
 
-
 # --------------
+
+# 1.Which olympic event(Winter or Summer) does a country perform better in..??
 #Code starts here
 
 data["Better_Event"] = np.where(data['Total_Summer'] > data['Total_Winter'],'Summer','Winter')
@@ -29,9 +31,9 @@ better_event = data.Better_Event.value_counts().idxmax()
 print(better_event)
 
 
+# -------------- 
 
-
-# --------------
+#2.Which are the top 10 performing teams at summer event (with respect to total medals), winter event and overall? How many teams are present in all of the three lists above?
 #Code starts here
 
 # A new dataframe subset called 'top_countries' with the columns
@@ -40,11 +42,9 @@ top_countries = data[['Country_Name','Total_Summer', 'Total_Winter','Total_Medal
 # Dropping the last row as it contains Total values.
 top_countries.drop(146,axis=0,inplace=True)
 
-
 top_10_summer = list(top_countries.nlargest(10,'Total_Summer')['Country_Name'])
 top_10_winter = list(top_countries.nlargest(10,'Total_Winter')['Country_Name'])
 top_10 = list(top_countries.nlargest(10,'Total_Medals')['Country_Name'])
-
 
 def common_member(top_10_summer, top_10_winter, top_10): 
     a = set(top_10_summer) 
@@ -54,12 +54,13 @@ def common_member(top_10_summer, top_10_winter, top_10):
         common = (a & b & c)
     return common
 
-
 common =list(common_member(top_10_summer, top_10_winter, top_10))
 print(common)
 
 
 # --------------
+
+#3. Plotting the medal count of the top 10 countries for better visualisation??
 #Code starts here
 
 (top_10_summer, top_10_winter, top_10)
@@ -76,6 +77,8 @@ top_df.plot(kind='bar', x='Country_Name', y='Total_Medals', figsize = (10, 7))
 
 
 # --------------
+
+# 4. Which country has had the best performance with respect to the ratio between gold medals won and total medals won.?
 #Code starts here
 
 #finding the ratio of Gold medal in Summer wrt total summer
@@ -99,8 +102,9 @@ top_max_ratio = max(top_df['Golden_Ratio'])
 top_country_gold = top_df.loc[top_df['Golden_Ratio'].idxmax(),'Country_Name']
 
 
-
 # --------------
+
+# 5. Winning Gold is great but is winning most gold equivalent to being the best overall perfomer?
 #Code starts here
 
 data_1 = data[:-1]
@@ -115,9 +119,11 @@ best_country = data_1.loc[data_1['Total_Points'].idxmax(),'Country_Name']
 print(best_country)
 
 
-
 # --------------
+
+# 6. We know which country is best when it comes to winning the most points in Olympic Games. Let's plot the medal count to visualise their success better.
 #Code starts here
+
 print(best_country)
 print(data.head())
 
